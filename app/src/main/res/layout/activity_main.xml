@@ -27,11 +27,13 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/button_false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_false" />
 
         <Button
+            android:id="@+id/button_true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_true" />
