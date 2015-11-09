@@ -39,25 +39,20 @@ public class MainActivity extends AppCompatActivity {
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, compareNames()? R.string.correct_answer : R.string.incorrect_answer,
-                        Toast.LENGTH_SHORT).show();
-                mCurrentIndex = mRandom.nextInt(3);
-                updateCharacter();
+                checkAnswer(true);
             }
         });
 
         falseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, !compareNames()? R.string.correct_answer : R.string.incorrect_answer,
-                        Toast.LENGTH_SHORT).show();
-                mCurrentIndex = mRandom.nextInt(3);
-                updateCharacter();
+                checkAnswer(false);
             }
         });
 
         updateCharacter();
     }
+
 
     private void updateCharacter(){
         int characterImage = mCharacters[mCurrentIndex].getImageResId();
@@ -67,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
         mCharacterName.setText(characterName);
 
         mCurrentNameId = characterName;
+    }
+
+    private void checkAnswer(boolean answer){
+        Toast.makeText(MainActivity.this, answer == compareNames()? R.string.correct_answer : R.string.incorrect_answer,
+                Toast.LENGTH_SHORT).show();
+
+        mCurrentIndex = mRandom.nextInt(3);
+        updateCharacter();
     }
 
     private boolean compareNames(){
