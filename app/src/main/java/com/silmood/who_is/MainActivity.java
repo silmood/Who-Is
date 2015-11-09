@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, compareNames()? R.string.correct_answer : R.string.incorrect_answer,
                         Toast.LENGTH_SHORT).show();
-                mCurrentIndex = (mCurrentIndex + 1) % mCharacters.length;
+                mCurrentIndex = mRandom.nextInt(3);
                 updateCharacter();
             }
         });
@@ -51,10 +51,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, !compareNames()? R.string.correct_answer : R.string.incorrect_answer,
                         Toast.LENGTH_SHORT).show();
-                mCurrentIndex = (mCurrentIndex + 1) % mCharacters.length;
+                mCurrentIndex = mRandom.nextInt(3);
                 updateCharacter();
             }
         });
+
+        updateCharacter();
     }
 
     private void updateCharacter(){
