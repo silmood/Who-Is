@@ -65,15 +65,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void restoreCharacterData(Bundle savedInstanceState){
-        mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
-        mCurrentName = savedInstanceState.getInt(KEY_NAME_ID, 0);
+        mCurrentImageIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        mCurrentNameIndex = savedInstanceState.getInt(KEY_NAME_ID, 0);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(KEY_INDEX, mCurrentIndex);
-        outState.putInt(KEY_NAME_ID, mCurrentName);
+        outState.putInt(KEY_INDEX, mCurrentImageIndex);
+        outState.putInt(KEY_NAME_ID, mCurrentNameIndex);
     }
 
     @Override
