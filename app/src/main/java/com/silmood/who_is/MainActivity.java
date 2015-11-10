@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private Random mRandom;
-    private int mCurrentIndex = 0;
-    private int mCurrentName;
+    private int mCurrentImageIndex;
+    private int mCurrentNameIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         mCharacterImage = (ImageView) findViewById(R.id.image_character);
         mCharacterName = (TextView) findViewById(R.id.name_character);
         mRandom = new Random();
+        mCurrentImageIndex = mRandom.nextInt(3);
+        mCurrentNameIndex = mRandom.nextInt(3);
 
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,24 +107,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateCharacter(){
-        int characterImage = mCharacters[mCurrentIndex].getImageResId();
-        int characterName = mCharacters[mCurrentName].getNameResId();
+        int characterImage = mCharacters[mCurrentImageIndex].getImageResId();
+        int characterName = mCharacters[mCurrentNameIndex].getNameResId();
 
         mCharacterImage.setImageResource(characterImage);
         mCharacterName.setText(characterName);
     }
 
     private void checkAnswer(boolean answer){
-        Toast.makeText(MainActivity.this, answer == compareNames()? R.string.correct_answer : R.string.incorrect_answer,
+        Toast.makeText(MainActivity.this, answer == compareIndex()? R.string.correct_answer : R.string.incorrect_answer,
                 Toast.LENGTH_SHORT).show();
 
-        mCurrentIndex = mRandom.nextInt(3);
-        mCurrentName = mRandom.nextInt(3);
-
+        mCurrentImageIndex = mRandom.nextInt(3);
+        mCurrentNameIndex = mRandom.nextInt(3);
         updateCharacter();
     }
 
-    private boolean compareNames(){
-        return mCurrentIndex == mCurrentName;
+    private boolean compareIndex(){
+        return mCurrentNameIndex == mCurrentImageIndex;
     }
 }
