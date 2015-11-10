@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private Random mRandom;
-    private int mCurrentIndex;
-    private int mCurrentName;
+    private int mCurrentImageIndex;
+    private int mCurrentNameIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         mCharacterImage = (ImageView) findViewById(R.id.image_character);
         mCharacterName = (TextView) findViewById(R.id.name_character);
         mRandom = new Random();
-        mCurrentIndex = mRandom.nextInt(3);
-        mCurrentName = mRandom.nextInt(3);
+        mCurrentImageIndex = mRandom.nextInt(3);
+        mCurrentNameIndex = mRandom.nextInt(3);
 
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void updateCharacter(){
-        int characterImage = mCharacters[mCurrentIndex].getImageResId();
-        int characterName = mCharacters[mCurrentName].getNameResId();
+        int characterImage = mCharacters[mCurrentImageIndex].getImageResId();
+        int characterName = mCharacters[mCurrentNameIndex].getNameResId();
 
         mCharacterImage.setImageResource(characterImage);
         mCharacterName.setText(characterName);
@@ -68,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, answer == compareIndex()? R.string.correct_answer : R.string.incorrect_answer,
                 Toast.LENGTH_SHORT).show();
 
-        mCurrentIndex = mRandom.nextInt(3);
-        mCurrentName = mRandom.nextInt(3);
+        mCurrentImageIndex = mRandom.nextInt(3);
+        mCurrentNameIndex = mRandom.nextInt(3);
         updateCharacter();
     }
 
     private boolean compareIndex(){
-        return mCurrentName == mCurrentIndex;
+        return mCurrentNameIndex == mCurrentImageIndex;
     }
 }
