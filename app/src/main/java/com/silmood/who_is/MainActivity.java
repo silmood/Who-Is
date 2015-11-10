@@ -1,7 +1,7 @@
 package com.silmood.who_is;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    public static final String KEY_INDEX = "index";
+    public static final String KEY_NAME_ID = "name";
+
     private ImageView mCharacterImage;
     private TextView mCharacterName;
 
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Random mRandom;
     private int mCurrentIndex = 0;
-    private int mCurrentNameId;
+    private int mCurrentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (savedInstanceState != null)
+            restoreCharacterData(savedInstanceState);
+
         updateCharacter();
+    }
+
+    private void restoreCharacterData(Bundle savedInstanceState){
+        mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        mCurrentName = savedInstanceState.getInt(KEY_NAME_ID, 0);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_INDEX, mCurrentIndex);
+        outState.putInt(KEY_NAME_ID, mCurrentName);
     }
 
     @Override
@@ -88,12 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateCharacter(){
         int characterImage = mCharacters[mCurrentIndex].getImageResId();
-        int characterName = mCharacters[mRandom.nextInt(3)].getNameResId();
+        int characterName = mCharacters[mCurrentName].getNameResId();
 
         mCharacterImage.setImageResource(characterImage);
         mCharacterName.setText(characterName);
-
-        mCurrentNameId = characterName;
     }
 
     private void checkAnswer(boolean answer){
@@ -101,10 +117,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
 
         mCurrentIndex = mRandom.nextInt(3);
+        mCurrentName = mRandom.nextInt(3);
+
         updateCharacter();
     }
 
     private boolean compareNames(){
-        return mCurrentNameId == mCharacters[mCurrentIndex].getNameResId();
+        return mCurrentIndex == mCurrentName;
     }
 }
