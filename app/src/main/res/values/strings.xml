@@ -5,4 +5,9 @@
     <string name="placeholder_name">Mr. Johnson</string>
     <string name="correct_answer">Correcto!</string>
     <string name="incorrect_answer">Incorrecto :(</string>
+
+    <string name="bruce_name">Bruce Willis</string>
+    <string name="jim_name">Jim Carrey</string>
+    <string name="nicolas_name">Nicolas Cage</string>
+
 </resources>

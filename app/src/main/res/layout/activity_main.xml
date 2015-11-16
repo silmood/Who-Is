@@ -12,11 +12,13 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/image_character"
         android:layout_width="186dp"
         android:layout_height="186dp"
         android:src="@drawable/person_placeholder" />
 
     <TextView
+        android:id="@+id/name_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/placeholder_name" />
