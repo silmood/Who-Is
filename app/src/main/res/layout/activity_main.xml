@@ -27,13 +27,19 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/button_false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_clear"
+            android:drawableLeft="@drawable/ic_clear"
             android:text="@string/label_false" />
 
         <Button
+            android:id="@+id/button_true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_done"
+            android:drawableRight="@drawable/ic_done"
             android:text="@string/label_true" />
 
     </LinearLayout>

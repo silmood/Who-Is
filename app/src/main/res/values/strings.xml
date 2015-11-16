@@ -3,4 +3,6 @@
     <string name="label_false">False</string>
     <string name="label_true">True</string>
     <string name="placeholder_name">Mr. Johnson</string>
+    <string name="correct_answer">Correcto!</string>
+    <string name="incorrect_answer">Incorrecto :(</string>
 </resources>
